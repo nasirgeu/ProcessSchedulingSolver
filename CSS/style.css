@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0px;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+.input-box {
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 2px, rgb(15 91 206 / 10%) 0px 2px 32px;
+    width: 30%;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 15px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    align-self: baseline;
+    -webkit-font-smoothing: antialiased;
+}
+
+.chart {
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 2px, rgb(15 91 206 / 10%) 0px 2px 32px;
+    width: 65%;
+    margin-right: 20px;
+    border-radius: 15px;
+    font-family: sans-serif;
+    align-self: baseline;
+    font-size: 1rem;
+
+}
+
+.input-heading {
+    font-size: 2.1rem;
+    font-weight: 600;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+}
+
+.input-arrival-time {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+    margin: auto;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.input-arrival-time label {
+    font-size: 14px;
+    padding-bottom: 8px;
+    margin-left: 25px;
+    float: left;
+}
+
+
+.arrival-time input {
+    width: 80%;
+    margin: auto;
+    border: 1px solid rgb(197, 199, 208);
+    border-radius: 5px;
+    padding: 11px 12px;
+    transition: all 0.2s ease-out 0s;
+    font-size: 14px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border: 1px solid rgb(103, 103, 208);
+}
+
+.solve {
+    margin: 15px;
+    margin-left: 35px;
+}
+
+.solve button {
+    background-color: rgb(38, 132, 255);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    width: 5.625rem;
+    height: 2.5rem;
+    transition: background-color 0.2s ease-out 0s;
+    position: relative;
+    overflow: hidden;
+}
+
+button {
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px;
+    appearance: none;
+}
+
+.Output-heading {
+    font-size: 2.0rem;
+    font-weight: 600;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+}
+
+.chartshow {
+    display: inline-block;
+    margin-left: 35px;
+    margin-bottom: 20px;
+}
+
+.output-table {
+    overflow-x: auto;
+    margin: auto;
+}
+
+table {
+    min-width: 580px;
+    display: inline-block;
+    margin-left: 30px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+table tr th {
+    padding: 18px;
+    text-align: center;
+    min-width: 40px;
+    font-size: 15px;
+    border: 1px solid rgb(225, 225, 225);
+    color: black;
+    line-height: 16.1px;
+}
+
+table tr td {
+    text-align: left;
+    padding: 14px;
+    border: 1px solid rgb(225, 225, 225);
+    color: black;
+    line-height: 14.1px;
+}
+
+.MyTable {
+    display: none;
+}
+
+.MyTable.ShowTable {
+    display: block;
+    border: none;
+}
+
+select {
+    width: 87%;
+    margin: auto;
+    border: 1px solid rgb(197, 199, 208);
+    border-radius: 5px;
+    padding: 11px 12px;
+    transition: all 0.2s ease-out 0s;
+    font-size: 14px
+}
+
+select option:hover {
+    background-color: lightgray;
+}
+
+.fcfs {
+    float: right;
+    background-color: rgb(232, 255, 247);
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 17px;
+}
+
+
+
+.pop-up {
+    width: 478px;
+    background-color: #fff;
+    border: 1px solid rgb(235, 232, 227);
+    border-radius: 20px;
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    border-radius: 5px;
+    padding: 0px 30px 30px;
+    transform: translate(-50%, -50%) scale(0.1);
+    transition: transform 0.4s ease-out;
+    visibility: hidden;
+    text-align: center;
+}
+
+.pop-up.show {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
+}
+
+.cross-icon {
+    /* background-color: red; */
+    margin-top: 24px;
+    /* color: red; */
+}
+
+.invalid-input {
+    font-size: 2.2rem;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.error-message {
+    font-size: 19px;
+    padding: 10px;
+    margin: 6px;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+
+
+.OKK {
+    margin: 15px;
+    margin-left: 35px;
+    background-color: rebeccapurple;
+}
+
+.OKK button {
+    background-color: rgb(38, 165, 255);
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    width: 5.625rem;
+    height: 2.5rem;
+    transition: background-color 0.2s ease-out 0s;
+    position: relative;
+    overflow: hidden;
+    float: right;
+}
+
+
+.GrantChart {
+    margin-left: 70px;
+    margin-right: 70px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.GrantChart .A {
+    margin-top: 30px;
+    width: 40px;
+    height: 35px;
+    border: 1px solid rgb(141, 166, 255);
+    background-color: rgb(237, 244, 255);
+    color: rgb(66, 66, 66);
+}
+
+.GrantChart .A .B {
+    margin: auto;
+    margin-top: 10px;
+}
+
+.number {
+    color: rgb(68, 78, 92);
+    position: relative;
+    right: -36px;
+    width: 40px;
+    height: 20px;
+    display: flex;
+    margin-top: 7px;
+}
+
+#priority1 {
+    display: none;
+}
+
+.input-arrival-time.priority1 {
+    display: block !important;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .input-box,
+    .chart {
+        width: 96%;
+    }
+
+    table {
+        min-width: 1020px;
+    }
+
+    .Output-heading,
+    .input-heading {
+        font-size: 1.5rem;
+    }
+
+    .chart {
+        margin-top: 20px;
+    }
+
+    .arrival-time input {
+        width: 86%;
+    }
+
+    select {
+        width: 90%;
+    }
+
+    .box {
+        margin: 10px;
+        margin-left: 20px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    table {
+        min-width: 1020px !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    table {
+        min-width: 920px !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    table {
+        min-width: 820px !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .MyTable tr th {
+        padding: 10px;
+        font-size: 13px;
+        min-width: 50px;
+        line-height: 1rem;
+    }
+
+    table {
+        min-width: 720px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    table {
+        min-width: 600px !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    table {
+        min-width: 520px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    table {
+        min-width: 420px !important;
+    }
+}

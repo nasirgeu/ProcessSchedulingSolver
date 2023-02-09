@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script type="text/javascript" src="../Js/FCFS.js"></script>
+    <script type="text/javascript" src="../Js/SJF.js"></script>
+    <script type="text/javascript" src="../Js/SRTF.js"></script>
+    <script type="text/javascript" src="../Js/PP.js"></script>
+    <script type="text/javascript" src="../Js/NPP.js"></script>
+    <script type="text/javascript" src="../Js/COMMON.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- complete background -->
+    <div class="box">
+        <div class="pop-up" id="popup">
+            <div class="cross-icon">
+                <img src="../Image/cross-circle.svg" alt="Image not load." width="70px" alt="">
+            </div>
+            <div class="invalid-input">Invalid input</div>
+            <span class="error-message" id="errormessage"></span>
+            <div class="OKK"><button onclick="RemoveClass()" class="okk-btn">OKK</button></div>
+        </div>
+
+        <!-- left side -->
+        <div class="input-box">
+            <div class="input-heading">
+                Input
+            </div>
+            <div class="input-arrival-time">
+                <label for="">Algorithm</label>
+                <div class="select-menu">
+                    <select name="" id="mySelect">
+                        <option class="" id="select" selected="selected" value="FCFS">FIRST COME FIRST SERVE, FCFS
+                        </option>
+                        <option class="" value="SJF">SHORTEST JOB FIRST, SJF</option>
+                        <option class="" value="SRTF">SHORTEST REMAINING TIME FIRST, SRTF</option>
+                        <option class="" value="NPP">PRIORITY (NON - PREEMPTIVE)</option>
+                        <option class="" value="PP">PRIORITY (PREEMPTIVE)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-arrival-time">
+                <label for="" id="arrival-time">Arrival Timess</label>
+                <div class="arrival-time"><input type="text" name="" value="" id="arrivaltime"
+                        placeholder="e.g. 0 2 4 6 8">
+                </div>
+            </div>
+
+            <div class="input-arrival-time">
+                <label for="" id="burst-time">Burst Times</label>
+                <div class="arrival-time"><input type="text" name="" value="" id="bursttime"
+                        placeholder="e.g. 0 2 4 6 8"></div>
+            </div>
+
+            <div class="input-arrival-time" id="priority1">
+                <label for="" id="burst-time">Priorities</label>
+                <div class="arrival-time"><input type="text" name="" value="" id="priority"
+                        placeholder="Lower # = Higher Priority"></div>
+            </div>
+
+            <div class="solve"><button onclick="submitBtn()">Solve</button></div>
+        </div>
+
+        <!-- right side -->
+
+        <div class="chart">
+            <div class="Output-heading">
+                Output
+                <div class="fcfs" id="algoname"></div>
+            </div>
+            <span class="chartshow">Gantt chart and table will be shown here</span> <br>
+            <div class="GrantChart">
+            </div>
+
+            <div class="output-table">
+                <table id="myTable" class="MyTable">
+                    <tr>
+                        <th>Job </th>
+                        <th>Arrival Time</th>
+                        <th>Burst Time</th>
+                        <th>Finish Time</th>
+                        <th>Turnaround Time</th>
+                        <th>Waiting Time</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("mySelect").addEventListener("change", function () {
+            var NPP = document.getElementById('priority1');
+            if (this.value === "NPP" || this.value === "PP")
+                NPP.classList.add("priority1");
+            else
+                NPP.classList.remove("priority1");
+        });
+
+        function RemoveClass() {
+            var po = document.getElementById("popup");
+            po.classList.remove("show");
+        }
+
+        function submitBtn() {
+            var selectOption = document.getElementById('mySelect').value;
+            if (selectOption === "FCFS")
+                FCFS();
+            else if (selectOption === "SJF")
+                SJF();
+            else if (selectOption === "SRTF")
+                SRTF();
+            else if (selectOption === "NPP")
+                NPP();
+            else if (selectOption === "PP")
+                PP();
+        }
+
+
+
+    </script>
+</body>
+
+</html>
