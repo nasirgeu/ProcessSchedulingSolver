@@ -70,12 +70,17 @@ function NPPSOLVE(inputArray) {
         }
         grantChart.innerHTML = "";
     }
-
+    var blankSpace = false;
+    var firstBlankSpace = true;
     for (var i = 0; i < arrayLen; i++) {
         ch = 0;
         for (var j = 0; j < arrayLen; j++) {
             if (!processArray[j].visit && ti >= processArray[j].arrivalTime) {
                 ch = 1;
+                if (blankSpace && !firstBlankSpace)
+                    printGrantChartN("-", ti);
+                firstBlankSpace = false;
+                blankSpace = false;
                 ti += processArray[j].burstTime;
                 processArray[j].completionTime = ti;
                 processArray[j].turnAroundTime = processArray[j].completionTime - processArray[j].arrivalTime;
@@ -89,6 +94,7 @@ function NPPSOLVE(inputArray) {
             }
         }
         if (!ch) {
+            blankSpace = true;
             ti++;
             i--;
         }

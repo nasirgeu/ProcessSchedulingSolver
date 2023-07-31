@@ -3,6 +3,7 @@
 function FCFS() {
     const arrivalTimeArray = getInputNumbers("arrivaltime");
     const burstTimeArray = getInputNumbers("bursttime");
+    console.log(arrivalTimeArray);
     const arrivalLen = arrivalTimeArray.length;
     const burstLen = burstTimeArray.length;
     if (!arrivalLen)
@@ -46,7 +47,7 @@ function FCFSSOLVE(inputArray) {
         const process = new Process1(i + 1, inputArray[i][0], inputArray[i][1]);
         processArray.push(process);
     }
-    sortArray(processArray,'arrivalTime');
+    sortArray(processArray, 'arrivalTime');
     const grantChart = document.querySelector(".GrantChart");
     if (grantChart) {
         while (grantChart.firstChild) {
@@ -54,9 +55,13 @@ function FCFSSOLVE(inputArray) {
         }
         grantChart.innerHTML = "";
     }
-
+    var blankSpace = false;
+    var firstBlankSpace = true;
     for (var i = 0; i < arrayLen; i++) {
         if (t >= processArray[i].arrivalTime) {
+            if (blankSpace && !firstBlankSpace)
+                printGrantChartN("-", t);
+            firstBlankSpace = false;
             t += processArray[i].burstTime;
             processArray[i].completionTime = t;
             processArray[i].turnAroundTime = processArray[i].completionTime - processArray[i].arrivalTime;
@@ -64,8 +69,10 @@ function FCFSSOLVE(inputArray) {
             processArray[i].waitingTime += processArray[i].turnAroundTime - processArray[i].burstTime;
             avgwaitingTime += processArray[i].waitingTime;
             printGrantChartN(processArray[i].processNumber, processArray[i].completionTime);
+            blankSpace = false;
         }
         else {
+            blankSpace = true;
             i--;
             t++;
         };

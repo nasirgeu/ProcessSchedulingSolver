@@ -72,14 +72,19 @@ function PPSOLVE(inputArray) {
         grantChart.innerHTML = "";
     }
     let grantChartArray = [];
+    var blankSpace = false;
+    var firstBlankSpace = true;
     while (true) {
         var ch = 0, zeroFound = 0;
+        blankSpace = false;
         for (var i = 0; i < arrayLen; i++) {
             if (processArray[i].burstTime != 0)
                 zeroFound = 1;
             if ((processArray[i].burstTime != 0) && (processArray[i].visit == 0) && t >= processArray[i].arrivalTime) {
                 t += 1;
                 ch = 1;
+                blankSpace = true;
+                firstBlankSpace = false;
                 processArray[i].burstTime -= 1;
                 if (processArray[i].burstTime == 0) {
                     processArray[i].completionTime = t;
@@ -97,6 +102,9 @@ function PPSOLVE(inputArray) {
             t += 1;
         else if (!zeroFound)
             break;
+        if (!blankSpace && !firstBlankSpace) {
+            grantChartArray.push(["-", t]);
+        }
         sortArray(processArray, 'priority');
     }
     printGrantChart(grantChartArray);

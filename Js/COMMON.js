@@ -39,21 +39,23 @@ function sortArray(processArray, criteria) {
     });
 }
 
-
 function printGrantChartN(processNumber, completionTime) {
     let parentDiv = document.getElementsByClassName("GrantChart")[0];
     let newDivA = document.createElement("div");
     newDivA.className = "A";
     let newDivB = document.createElement("div");
     newDivB.className = "B";
-    newDivB.innerHTML = convertToAlphabet(processNumber);
+    console.log(processNumber);
+    if (processNumber != "-")
+        newDivB.innerHTML = convertToAlphabet(processNumber);
+    else
+        newDivB.innerHTML = "-";
     let newSpan = document.createElement("span");
     newSpan.className = "number";
     newSpan.innerHTML = completionTime;
     newDivB.appendChild(newSpan);
     newDivA.appendChild(newDivB);
     parentDiv.appendChild(newDivA);
-
 }
 
 
@@ -125,7 +127,11 @@ function printGrantChart(grantChartArray) {
         newDivA.className = "A";
         let newDivB = document.createElement("div");
         newDivB.className = "B";
-        newDivB.innerHTML = convertToAlphabet(grantChartArray[i][0]);
+        console.log(grantChartArray[i][0]);
+        if (grantChartArray[i][0] != "-")
+            newDivB.innerHTML = convertToAlphabet(grantChartArray[i][0]);
+        else
+            newDivB.innerHTML = "-";
         let newSpan = document.createElement("span");
         newSpan.className = "number";
         newSpan.innerHTML = grantChartArray[i][1];

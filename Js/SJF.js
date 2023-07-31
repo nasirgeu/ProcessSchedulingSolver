@@ -43,7 +43,7 @@ function SJFSOLVE(inputArray) {
         const process = new Process4(i + 1, inputArray[i][0], inputArray[i][1]);
         processArray.push(process);
     }
-    sortArray(processArray,'burstTime');
+    sortArray(processArray, 'burstTime');
     const grantChart = document.querySelector(".GrantChart");
     if (grantChart) {
         while (grantChart.firstChild) {
@@ -51,25 +51,30 @@ function SJFSOLVE(inputArray) {
         }
         grantChart.innerHTML = "";
     }
-
+    var blankSpace = false;
+    var firstBlankSpace = true;
     for (var i = 0; i < arrayLen; i++) {
         ch = 0;
         for (var j = 0; j < arrayLen; j++) {
             if (!processArray[j].visit && ti >= processArray[j].arrivalTime) {
                 ch = 1;
+                if (blankSpace && !firstBlankSpace)
+                    printGrantChartN("-", ti);
                 ti += processArray[j].burstTime;
+                firstBlankSpace = false;
+                blankSpace = false;
                 processArray[j].completionTime = ti;
                 processArray[j].turnAroundTime = processArray[j].completionTime - processArray[j].arrivalTime;
                 processArray[j].waitingTime = processArray[j].turnAroundTime - processArray[j].burstTime;
                 avgturnAroundTime += processArray[j].turnAroundTime;
                 avgwaitingTime += processArray[j].waitingTime;
                 processArray[j].visit = 1;
-                printGrantChartN(processArray[i].processNumber, processArray[j].completionTime);
+                printGrantChartN(processArray[j].processNumber, processArray[j].completionTime);
                 break;
-
             }
         }
         if (!ch) {
+            blankSpace = true;
             ti++;
             i--;
         }
